@@ -9,14 +9,14 @@ const cacheAssets=[
 
 self.addEventListener('install', e =>{
   console.log('service installed');
-  // e.waitUntil(
-  //   caches.open(cacheName)
-  //   .then(cache => {
-  //     console.log("service worker: cacheing files");
-  //     cache.addAll(cacheAssets)
-  //   })
-  //   .then(()=> self.skipWaiting())
-  // )
+  e.waitUntil(
+    caches.open(cacheName)
+    .then(cache => {
+      console.log("service worker: cacheing files");
+      cache.addAll(cacheAssets)
+    })
+    .then(()=> self.skipWaiting())
+  )
 })
 
 self.addEventListener('activate', e =>{
